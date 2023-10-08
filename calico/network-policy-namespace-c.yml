@@ -4,5 +4,9 @@ metadata:
   name: network-policy-for-namespace-c
   namespace: namespace-c
 spec:
-  # TODO:
-  # Define ingress
+  podSelector: {}
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: namespace-a

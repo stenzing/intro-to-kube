@@ -4,6 +4,17 @@ metadata:
   name: network-policy-for-namespace-a
   namespace: namespace-a
 spec:
-  # TODO:
-  # Define ingress
-  # Define egress
+  podSelector: {}
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: namespace-b
+  egress:
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          name: namespace-b
+    - namespaceSelector:
+        matchLabels:
+          name: namespace-c
