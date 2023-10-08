@@ -13,11 +13,4 @@ spec:
     - namespaceSelector:
         matchLabels:
           kubernetes.io/metadata.name: namespace-b
-  egress:
-  - to:
-    - namespaceSelector:
-        matchLabels:
-          kubernetes.io/metadata.name: namespace-b
-    - namespaceSelector:
-        matchLabels:
-          kubernetes.io/metadata.name: namespace-c
+  egress: {}
