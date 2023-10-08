@@ -5,6 +5,8 @@ metadata:
   namespace: namespace-c
 spec:
   podSelector: {}
+  policyTypes:
+  - Ingress
   ingress:
   - from:
     - namespaceSelector:
