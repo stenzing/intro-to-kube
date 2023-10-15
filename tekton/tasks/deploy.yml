@@ -9,6 +9,21 @@ spec:
     - name: IMAGE
       type: string
   steps:
+    - name: checkout
+      image: alpine
+      script: |
+        #!/bin/bash
+        git clone $(params.REPO_URL) /workspace/source
+    - name: run1
+      image: lachlanevenson/k8s-kubectl
+      script: |
+        #!/bin/bash
+        kubectl apply -f /workspace/source/tekton/k8s/nginx-deployment.yml -n=<NAMESPACE>
+    - name: run2
+      image: achlanevenson/k8s-kubectl
+      script: |
+        #!/bin/bash
+        kubectl set image deployment/nginx-deployment nginx=$(params.IMAGE) -n=$(params.NAMESPACE)
     # TODO
     # Add the following steps to your Task:
     # 1. Clone the repo given the paramters to /workspace/source
